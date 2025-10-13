@@ -1,6 +1,8 @@
 package com.example.mob;
 
-public abstract sealed class Mob permits Creeper, BabyZombie, Skeleton, Zombie, Cow {
+import com.example.spawning.SpawnRate;
+
+public abstract class Mob {
 
     private final String name;
     private final SpawnRate spawnRate;
