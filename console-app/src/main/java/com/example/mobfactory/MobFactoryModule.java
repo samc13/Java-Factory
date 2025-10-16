@@ -1,5 +1,6 @@
 package com.example.mobfactory;
 
+import com.example.mob.SpawnableMobModule;
 import com.google.inject.AbstractModule;
 
 public class MobFactoryModule extends AbstractModule {

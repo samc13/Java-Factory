@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import com.google.inject.Inject;
 
-public class GameLoop {
+class GameLoop {
 
     private static final int TICKS_PER_SECOND = 4;
     private static final long TICK_DURATION_MS = 1000 / TICKS_PER_SECOND;

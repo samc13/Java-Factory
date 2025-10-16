@@ -9,14 +9,16 @@ import com.google.inject.Singleton;
 @Singleton
 public class Spawner {
 
-    @Inject
-    public Spawner() {
+    private final MobFactory mobFactory;
 
+    @Inject
+    Spawner(final MobFactory mobFactory) {
+        this.mobFactory = mobFactory;
     }
 
-    public Optional<Mob> spawn(final MobFactory mobFactory) {
-        return mobFactory.create().getSpawnRate().getRateMultiplier().doubleValue() > Math.random()
-                ? Optional.of(mobFactory.create())
+    public Optional<Mob> spawn() {
+        return mobFactory.selectMob().getSpawnRate().getRateMultiplier().doubleValue() > Math.random()
+                ? Optional.of(mobFactory.selectMob())
                 : Optional.empty();
     }
 

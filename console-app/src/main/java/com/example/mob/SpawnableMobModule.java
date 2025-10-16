@@ -1,14 +1,8 @@
-package com.example.mobfactory;
+package com.example.mob;
 
 import java.util.List;
 import java.util.function.Supplier;
 
-import com.example.mob.BabyZombie;
-import com.example.mob.Cow;
-import com.example.mob.Creeper;
-import com.example.mob.Mob;
-import com.example.mob.Skeleton;
-import com.example.mob.Zombie;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
