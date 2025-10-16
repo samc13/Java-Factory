@@ -1,6 +1,6 @@
 package com.example;
 
-import com.example.mobfactory.RandomMobSelectionFactory;
+import com.example.mobfactory.MobFactory;
 import com.example.mobfactory.Spawner;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -9,12 +9,14 @@ import com.google.inject.Singleton;
 public class GameTick {
 
     private final Spawner spawner;
-    private final RandomMobSelectionFactory mobFactory = new RandomMobSelectionFactory();
+    private final MobFactory mobFactory;
 
     @Inject
     public GameTick(
-            final Spawner spawner) {
+            final Spawner spawner,
+            final MobFactory mobFactory) {
         this.spawner = spawner;
+        this.mobFactory = mobFactory;
     }
 
     public void run() {

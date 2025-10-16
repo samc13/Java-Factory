@@ -14,7 +14,7 @@ public class Spawner {
 
     }
 
-    public Optional<Mob> spawn(final MobFactory.Factory mobFactory) {
+    public Optional<Mob> spawn(final MobFactory mobFactory) {
         return mobFactory.create().getSpawnRate().getRateMultiplier().doubleValue() > Math.random()
                 ? Optional.of(mobFactory.create())
                 : Optional.empty();

@@ -2,9 +2,6 @@ package com.example.mobfactory;
 
 import com.example.mob.Mob;
 
-public class MobFactory {
-
-    interface Factory {
-        Mob create();
-    }
+public interface MobFactory {
+    Mob create();
 }

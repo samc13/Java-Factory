@@ -1,29 +1,29 @@
 package com.example.mobfactory;
 
+import java.util.List;
 import java.util.Random;
+import java.util.function.Supplier;
 
-import com.example.mob.BabyZombie;
-import com.example.mob.Cow;
-import com.example.mob.Creeper;
 import com.example.mob.Mob;
-import com.example.mob.Skeleton;
-import com.example.mob.Zombie;
-import com.example.mobfactory.MobFactory.Factory;
+import com.google.inject.Inject;
 
-public class RandomMobSelectionFactory implements Factory {
+public class RandomMobSelectionFactory implements MobFactory {
 
     private final Random random = new Random();
 
+    private final List<Supplier<? extends Mob>> spawnableMobSuppliers;
+
+    @Inject
+    public RandomMobSelectionFactory(
+            final List<Supplier<? extends Mob>> spawnableMobSuppliers) {
+        this.spawnableMobSuppliers = spawnableMobSuppliers;
+    }
+
     @Override
     public Mob create() {
-        // TODO: Inject all mobs via Guice
-        return switch (random.nextInt(5)) {
-            case 0 -> new Creeper();
-            case 1 -> new BabyZombie();
-            case 2 -> new Skeleton();
-            case 3 -> new Zombie();
-            case 4 -> new Cow();
-            default -> throw new IllegalStateException("Unexpected value");
-        };
+        if (spawnableMobSuppliers == null || spawnableMobSuppliers.isEmpty()) {
+            throw new IllegalStateException("No spawnable mobs available");
+        }
+        return spawnableMobSuppliers.get(random.nextInt(spawnableMobSuppliers.size())).get();
     }
 }
