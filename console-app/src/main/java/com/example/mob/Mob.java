@@ -10,11 +10,10 @@ public abstract class Mob {
     private final int attackDamage;
 
     protected Mob(
-        final String name,
-        final SpawnRate spawnRate,
-        final int health,
-        final int attackDamage
-    ) {
+            final String name,
+            final SpawnRate spawnRate,
+            final int health,
+            final int attackDamage) {
         this.name = name;
         this.spawnRate = spawnRate;
         this.health = health;
@@ -23,7 +22,8 @@ public abstract class Mob {
 
     @Override
     public String toString() {
-        return "Mob Name: %s; Spawn-Rate: %s".formatted(getName(), getSpawnRate().name());
+        return "%s (%s)".formatted(getName(),
+                getSpawnRate().name().toLowerCase().replace('_', ' '));
     }
 
     public String getName() {
@@ -41,5 +41,5 @@ public abstract class Mob {
     public int getAttackDamage() {
         return this.attackDamage;
     }
-    
+
 }

@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public enum SpawnRate {
-    VERY_RARE(0.01),
-    RARE(0.1),
-    COMMON(0.25);
+    VERY_RARE(0.0025), // 0.25%
+    RARE(0.01), // 1%
+    COMMON(0.07); // 7%
 
     private final BigDecimal rateMultiplier;
 
