@@ -1,6 +1,7 @@
 package com.example.mobfactory;
 
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import com.example.mob.Mob;
 import com.google.inject.Inject;
@@ -17,9 +18,12 @@ public class Spawner {
     }
 
     public Optional<Mob> spawn() {
-        return mobFactory.selectMob().getSpawnRate().getRateMultiplier().doubleValue() > Math.random()
-                ? Optional.of(mobFactory.selectMob())
-                : Optional.empty();
+        return Optional.of(mobFactory.selectMob())
+                .filter(attemptSpawn());
+    }
+
+    private Predicate<Mob> attemptSpawn() {
+        return mob -> mob.getSpawnRate().getRateMultiplier().doubleValue() > Math.random();
     }
 
 }
